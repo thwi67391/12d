@@ -1,0 +1,14 @@
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\bin\Debug\net8.0\Lommeregner.exe
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\bin\Debug\net8.0\Lommeregner.deps.json
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\bin\Debug\net8.0\Lommeregner.runtimeconfig.json
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\bin\Debug\net8.0\Lommeregner.dll
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\bin\Debug\net8.0\Lommeregner.pdb
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\obj\Debug\net8.0\Lommeregner.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\obj\Debug\net8.0\Lommeregner.AssemblyInfoInputs.cache
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\obj\Debug\net8.0\Lommeregner.AssemblyInfo.cs
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\obj\Debug\net8.0\Lommeregner.csproj.CoreCompileInputs.cache
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\obj\Debug\net8.0\Lommeregner.dll
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\obj\Debug\net8.0\refint\Lommeregner.dll
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\obj\Debug\net8.0\Lommeregner.pdb
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\obj\Debug\net8.0\Lommeregner.genruntimeconfig.cache
+C:\Users\birkp\source\repos\Lommeregner\Lommeregner\obj\Debug\net8.0\ref\Lommeregner.dll
