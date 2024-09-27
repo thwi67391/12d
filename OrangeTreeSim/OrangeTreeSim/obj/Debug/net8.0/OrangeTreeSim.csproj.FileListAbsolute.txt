@@ -1,0 +1,14 @@
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\bin\Debug\net8.0\OrangeTreeSim.exe
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\bin\Debug\net8.0\OrangeTreeSim.deps.json
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\bin\Debug\net8.0\OrangeTreeSim.runtimeconfig.json
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\bin\Debug\net8.0\OrangeTreeSim.dll
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\bin\Debug\net8.0\OrangeTreeSim.pdb
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\obj\Debug\net8.0\OrangeTreeSim.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\obj\Debug\net8.0\OrangeTreeSim.AssemblyInfoInputs.cache
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\obj\Debug\net8.0\OrangeTreeSim.AssemblyInfo.cs
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\obj\Debug\net8.0\OrangeTreeSim.csproj.CoreCompileInputs.cache
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\obj\Debug\net8.0\OrangeTreeSim.dll
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\obj\Debug\net8.0\refint\OrangeTreeSim.dll
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\obj\Debug\net8.0\OrangeTreeSim.pdb
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\obj\Debug\net8.0\OrangeTreeSim.genruntimeconfig.cache
+C:\Users\theis\source\repos\OrangeTreeSim\OrangeTreeSim\obj\Debug\net8.0\ref\OrangeTreeSim.dll
