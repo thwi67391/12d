@@ -1,0 +1,240 @@
+using System;
+using System.IO;
+
+class Program
+{
+    //Sådan finder man filerne :D
+    //C -> Brugere -> x -> Source -> Repos -> Vælg projekt -> Mappe -> Bin -> Debug -> Net.08
+
+    // Fil til viser alle brugerne
+    static string userFilePath = "users.txt";
+    // Fil til vores historik
+    static string logFilePath = "log.txt";
+
+    static void Main(string[] args)
+    {
+        while (true)
+        {
+            Console.Clear();    
+            Console.WriteLine("Velkommen til Hydac! Vælg en mulighed nedenfor :");
+            Console.WriteLine("1. Registrer bruger (Ny gæst eller medarbejder)");
+            Console.WriteLine("2. Log ind (Eksisterende gæst eller medarbejder) ");
+            Console.WriteLine("3. Afslut program");
+
+            string valg = Console.ReadLine();
+            Console.Clear() ;
+            switch (valg)
+            {
+               
+                case "1":
+                    RegistrerBruger();
+                    break;
+                case "2":
+                   
+                    LogInd();
+                   
+                    break;
+                case "3":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine(" Svar ikke godkendt, prøv igen.\n");
+                    break;
+                    
+            }
+        }
+    }
+
+    // Registrerer en ny bruger og gemmer i users.txt
+    static void RegistrerBruger()
+    {
+        Console.Clear();
+        Console.Write("Indtast Email: ");
+        string email = Console.ReadLine();
+
+        Console.Write("Indtast den virksomhed du kommer fra: ");
+        string virksomhed = Console.ReadLine();
+
+        Console.Write("Er du ansat hos Hydac? (ja/nej): ");
+        
+        string erAnsatInput = Console.ReadLine();
+      
+        bool erAnsat = erAnsatInput.ToLower() == "ja";
+
+        // Tjek om brugernavn allerede findes
+        if (BrugerEksisterer(email))
+        {
+            Console.WriteLine("\n Email er allerede i brug. Prøv at logge ind.\n ");
+            return;
+        }
+
+        // Gem brugerdata i users.txt /email / virksomhed / erAnsat)
+        using (StreamWriter sw = new StreamWriter(userFilePath, true))
+        {
+            sw.WriteLine(email + "/" + virksomhed + "/" + erAnsat);
+        }
+
+        Console.WriteLine("\n Gæsten er nu registreret i systemet !\n");
+        
+        
+    }
+
+    // Tjek om brugernavn allerede eksisterer
+    static bool BrugerEksisterer(string email)
+    {
+        if (File.Exists(userFilePath))
+        {
+            string[] linjer = File.ReadAllLines(userFilePath);
+            foreach (string linje in linjer)
+            {
+                string[] brugerData = linje.Split('/');
+                if (brugerData[0] == email)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Bruger log ind funktion
+    
+    static void LogInd()
+       
+    {
+        Console.Write("Indtast Email: ");
+        string email = Console.ReadLine();
+
+        Console.Write("Indtast den virksomhed du kommer fra: ");
+        string virksomhed = Console.ReadLine();
+        Console.Clear();
+        if (ValiderLogin(email, virksomhed, out bool erAnsat))
+        {
+            Console.WriteLine(" Log ind vellykket! Velkommen: " + email + "\n");
+            BrugerMenu(email, erAnsat);
+        }
+        else
+        {
+            Console.WriteLine("\n Log ind fejlede. Forkert Email eller Virksomhed. \n");
+        }
+        
+    }
+
+    // Tjekker login oplysninger og om brugeren er admin
+    static bool ValiderLogin(string brugernavn, string adgangskode, out bool erAnsat)
+    {
+        erAnsat = false;
+
+        if (File.Exists(userFilePath))
+        {
+            string[] linjer = File.ReadAllLines(userFilePath);
+            foreach (string linje in linjer)
+            {
+                string[] brugerData = linje.Split('/');
+                if (brugerData[0] == brugernavn && brugerData[1] == adgangskode)
+                {
+                    erAnsat = Convert.ToBoolean(brugerData[2]);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Brugerens menu efter login / Ansat
+    static void BrugerMenu(string email, bool erAnsat)
+    {
+        while (true)
+        {
+            Console.WriteLine("Vælg en handling:");
+            Console.WriteLine("1. Check ind");
+            Console.WriteLine("2. Check ud");
+
+            // Kun admin-brugere kan se historik
+            if (erAnsat)
+            {
+                Console.WriteLine("3. Se historik over alle check-ins/outs");
+            }
+
+            Console.WriteLine("4. Log ud");
+
+            string valg = Console.ReadLine();
+
+            switch (valg)
+            {
+                case "1":
+                    CheckInd(email);
+                    break;
+                case "2":
+                    CheckUd(email);
+                    break;
+                case "3":
+                    if (erAnsat)
+                    {
+                        VisHistorik();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ugyldigt valg. Prøv igen.");
+                    }
+                    break;
+                case "4":
+                    Console.WriteLine("\n Logger ud... \n ");
+                    return;
+                default:
+                    Console.WriteLine("\n Ugyldigt valg. Prøv igen.\n ");
+                    break;
+                   
+            }
+        }
+    }
+
+    // Check ind funktion
+    static void CheckInd(string email)
+    {
+        Console.Clear();
+        string tid = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        string tjekInd = email + " checked in at " + tid;
+
+        using (StreamWriter sw = new StreamWriter(logFilePath, true))
+        {
+            sw.WriteLine(tjekInd);
+        }
+
+        Console.WriteLine(" Check ind vellykket! Tidspunkt: " + tid + "\n " );
+    }
+
+    // Check ud funktion
+    static void CheckUd(string email)
+    {
+        Console.Clear();
+        string tid = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        string logUd = email + " Tjekkede ud: " + tid + "\n ";
+
+        using (StreamWriter sw = new StreamWriter(logFilePath, true))
+        {
+            sw.WriteLine(logUd);
+        }
+
+        Console.WriteLine(" Check ud vellykket! Tidspunkt: " + tid + "\n ");
+    }
+
+    // Viser historik over alle check-ins og check-outs
+    static void VisHistorik()
+    {
+        Console.Clear();
+        if (!File.Exists(logFilePath))
+        {
+            Console.WriteLine("\n Der er ingen historik endnu.\n ");
+            return;
+        }
+
+        string[] historik = File.ReadAllLines(logFilePath);
+        Console.WriteLine("\n--- Historik over check-ins og check-outs ---");
+        foreach (string linje in historik)
+        {
+            Console.WriteLine(linje);
+        }
+        Console.WriteLine("--------------------------------------------\n");
+    }
+}
